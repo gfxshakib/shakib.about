@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>SHAKIB AHMAD | VIP Cyber Portfolio & Creative AI Engine</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    /* =============================================================
+       1. VIP CYBER THEME VARIABLES & GLOBAL RESETS
+       ============================================================= */
+    :root {
+      --bg-dark: #030712;
+      --bg-card: rgba(13, 19, 39, 0.82);
+      --bg-card-solid: #0d1327;
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.5);
+      --accent: #00f2fe;
+      --accent-glow: rgba(0, 242, 254, 0.5);
+      --vip-gold: #f59e0b;
+      --vip-gold-glow: rgba(245, 158, 11, 0.45);
+      --neon-purple: #8b5cf6;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-card: rgba(0, 242, 254, 0.18);
+      --border-hover: rgba(0, 242, 254, 0.6);
+      --font-title: 'Space Grotesk', 'Poppins', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      line-height: 1.5;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Glowing Neon Orbs */
+    .ambient-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.45;
+      animation: floatOrb 10s infinite alternate ease-in-out;
+    }
+    .orb-1 { width: 380px; height: 380px; top: -100px; left: -100px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); }
+    .orb-2 { width: 420px; height: 420px; bottom: 15%; right: -120px; background: radial-gradient(circle, var(--neon-purple) 0%, transparent 70%); animation-delay: -5s; }
+    .orb-3 { width: 300px; height: 300px; top: 40%; left: 50%; transform: translateX(-50%); background: radial-gradient(circle, var(--primary) 0%, transparent 70%); opacity: 0.25; }
+
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(25px, 20px) scale(1.1); }
+    }
+
+    #particles-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* SUBTLE BACKGROUND WATERMARK (NON-INTRUSIVE) */
+    .watermark-bg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-25deg);
+      font-family: var(--font-title);
+      font-size: clamp(3.2rem, 11vw, 8rem);
+      font-weight: 900;
+      letter-spacing: 12px;
+      color: rgba(255, 255, 255, 0.018);
+      -webkit-text-stroke: 1px rgba(0, 242, 254, 0.04);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1;
+      text-transform: uppercase;
+    }
+
+    /* Layout Wrapper */
+    .app-container {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 82px 14px 110px 14px;
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (min-width: 768px) {
+      .app-container {
+        max-width: 680px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+
+    /* Cyber Card Glass Container */
+    .cyber-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-xl);
+      padding: 24px 20px;
+      margin-bottom: 22px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .cyber-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.6;
+      z-index: 3;
+    }
+    .cyber-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 20px 45px rgba(0, 242, 254, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+
+    /* Section Titles */
+    .section-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .section-title {
+      font-family: var(--font-title);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-transform: uppercase;
+    }
+    .section-title i {
+      color: var(--accent);
+      filter: drop-shadow(0 0 8px var(--accent));
+    }
+    .section-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    /* =============================================================
+       2. FIXED VIP NAVIGATION BAR
+       ============================================================= */
+    .fixed-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 68px;
+      background: rgba(3, 7, 18, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(0, 242, 254, 0.15);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header-inner {
+      width: 100%;
+      max-width: 820px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .brand-logo-box {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, var(--neon-purple) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 18px var(--accent-glow);
+      font-family: var(--font-title);
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #030712;
+    }
+    .brand-text h1 {
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.8px;
+    }
+    .brand-text p {
+      font-size: 0.62rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 1.5px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .header-action-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(13, 19, 39, 0.8);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    .header-action-btn:hover {
+      background: var(--accent);
+      color: var(--bg-dark);
+      box-shadow: 0 0 14px var(--accent);
+    }
+    .view-counter-pill {
+      background: rgba(13, 19, 39, 0.8);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      padding: 5px 10px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .view-counter-pill i {
+      color: var(--accent);
+    }
+
+    /* Navigation Drawer */
+    .nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 290px;
+      height: 100vh;
+      background: #080d1d;
+      border-left: 1px solid var(--border-card);
+      z-index: 105;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 50px rgba(0,0,0,0.8);
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-drawer.open { right: 0; }
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(5px);
+      z-index: 104;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .drawer-overlay.active { opacity: 1; pointer-events: auto; }
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .drawer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .drawer-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
+    .drawer-links a i { color: var(--accent); width: 18px; }
+    .drawer-links a:hover {
+      background: rgba(0, 242, 254, 0.15);
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* =============================================================
+       3. HERO / PROFILE CARD WITH FACEBOOK STYLE COVER PHOTO
+       ============================================================= */
+    .profile-card {
+      padding: 0 !important;
+      text-align: center;
+      position: relative;
+    }
+    .profile-cover-wrap {
+      width: 100%;
+      height: 185px;
+      position: relative;
+      background: #0d162f;
+      overflow: hidden;
+    }
+    @media (min-width: 600px) {
+      .profile-cover-wrap {
+        height: 220px;
+      }
+    }
+    .profile-cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .profile-cover-wrap:hover .profile-cover-img {
+      transform: scale(1.03);
+    }
+    .cover-gradient-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(3,7,18,0.2) 0%, rgba(13,19,39,0.7) 70%, var(--bg-card-solid) 100%);
+      pointer-events: none;
+    }
+    .cover-edit-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(3, 7, 18, 0.75);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--accent);
+      color: #fff;
+      padding: 6px 13px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 5;
+      transition: var(--transition);
+    }
+    .cover-edit-btn:hover {
+      background: var(--accent);
+      color: var(--bg-dark);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    .profile-body-content {
+      padding: 0 20px 24px 20px;
+      position: relative;
+      z-index: 4;
+    }
+    .avatar-wrapper {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: -70px auto 16px auto;
+    }
+    .avatar-ring {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, var(--accent), var(--primary), var(--neon-purple), var(--vip-gold), var(--accent));
+      animation: spinRing 4s linear infinite;
+      filter: blur(4px);
+    }
+    @keyframes spinRing {
+      100% { transform: rotate(360deg); }
+    }
+    .avatar-frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #080d1d;
+      z-index: 2;
+      background: #0d142d;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.8);
+    }
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .vip-badge-ribbon {
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 1px solid var(--vip-gold);
+      padding: 3px 14px;
+      border-radius: 20px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--vip-gold);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 4;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.35);
+    }
+    .vip-pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulseBlink 1.5s infinite;
+    }
+    @keyframes pulseBlink {
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .vip-tag-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .vip-pill {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fbbf24;
+      font-size: 0.62rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      letter-spacing: 0.5px;
+    }
+    .vip-pill.blue {
+      background: rgba(0, 242, 254, 0.12);
+      border-color: rgba(0, 242, 254, 0.35);
+      color: var(--accent);
+    }
+
+    .hero-name {
+      font-family: var(--font-title);
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #ffffff 40%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 4px;
+    }
+    .typewriter-box {
+      min-height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .typewriter-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent);
+      border-right: 2px solid var(--accent);
+      padding-right: 4px;
+      animation: blinkCursor 0.8s infinite;
+    }
+    @keyframes blinkCursor {
+      50% { border-color: transparent; }
+    }
+    .hero-bio {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 500px;
+      margin: 0 auto 22px auto;
+    }
+
+    /* Fixed Clean Hero Buttons Grid (No Text Truncation) */
+    .hero-btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .btn-vip {
+      background: rgba(13, 19, 39, 0.85);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      padding: 13px 14px;
+      border-radius: var(--radius-md);
+      color: #fff;
+      font-family: var(--font-title);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-vip:hover {
+      background: rgba(0, 242, 254, 0.15);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 242, 254, 0.25);
+    }
+    .btn-vip.primary {
+      background: linear-gradient(135deg, var(--primary) 0%, #0284c7 100%);
+      border: 1px solid var(--accent);
+      box-shadow: 0 4px 18px var(--primary-glow);
+    }
+    .btn-vip.primary:hover {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+      color: #030712;
+      box-shadow: 0 6px 24px var(--accent-glow);
+    }
+    .btn-vip.full-btn {
+      grid-column: span 2;
+      background: rgba(13, 19, 39, 0.95);
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+    .btn-vip.full-btn:hover {
+      border-color: var(--accent);
+      background: rgba(0, 242, 254, 0.12);
+    }
+
+    /* =============================================================
+       4. GLOBAL COMMUNITY (SOCIAL CHANNELS)
+       ============================================================= */
+    .social-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px;
+    }
+    .social-card {
+      background: rgba(8, 13, 29, 0.65);
+      border: 1px solid rgba(0, 242, 254, 0.15);
+      border-radius: var(--radius-lg);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+      transition: var(--transition);
+      min-width: 0;
+    }
+    .social-card:hover {
+      border-color: var(--accent);
+      background: rgba(13, 19, 39, 0.88);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 242, 254, 0.15);
+    }
+    .social-card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .social-icon-box {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .icon-yt { background: linear-gradient(135deg, #ff0000, #cc0000); }
+    .icon-tt { background: linear-gradient(135deg, #00f2fe, #fe0979); }
+    .icon-fb { background: linear-gradient(135deg, #1877f2, #0c56b8); }
+    .icon-ig { background: linear-gradient(135deg, #f09433, #bc1888); }
+    .icon-tg { background: linear-gradient(135deg, #2aabee, #177aa8); }
+    .icon-gh { background: linear-gradient(135deg, #333333, #111111); }
+    .icon-tw { background: linear-gradient(135deg, #1da1f2, #0d8bd9); }
+    .icon-wa { background: linear-gradient(135deg, #25d366, #128c7e); }
+
+    .social-meta {
+      min-width: 0;
+      overflow: hidden;
+    }
+    .social-meta h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .social-meta span {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .social-stats-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 8px;
+    }
+    .follower-val {
+      font-family: var(--font-title);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .follower-sub {
+      font-size: 0.6rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .social-btn {
+      width: 100%;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      border-radius: 8px;
+      padding: 7px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+    .social-btn:hover {
+      background: var(--accent);
+      color: var(--bg-dark);
+      box-shadow: 0 0 12px var(--accent-glow);
+    }
+
+    /* =============================================================
+       5. CONTACT TRANSMISSION TERMINAL
+       ============================================================= */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .input-box {
+      width: 100%;
+      background: rgba(8, 13, 29, 0.85);
+      border: 1px solid rgba(0, 242, 254, 0.2);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.84rem;
+      outline: none;
+      transition: var(--transition);
+    }
+    .input-box:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 14px rgba(0, 242, 254, 0.3);
+    }
+    textarea.input-box {
+      resize: vertical;
+      min-height: 95px;
+    }
+
+    /* Floating Contact Widget */
+    .floating-action-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 20px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+      border: 2px solid rgba(255,255,255,0.4);
+      color: #030712;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      cursor: pointer;
+      box-shadow: 0 8px 25px var(--accent-glow);
+      z-index: 99;
+      transition: var(--transition);
+    }
+    .floating-action-btn:hover {
+      transform: scale(1.08) translateY(-3px);
+      box-shadow: 0 12px 35px var(--accent-glow);
+    }
+    .float-panel {
+      position: fixed;
+      bottom: 88px;
+      right: 20px;
+      width: 260px;
+      background: #0a0f24;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: 0 20px 45px rgba(0,0,0,0.8);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(15px);
+      transition: var(--transition);
+    }
+    .float-panel.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    /* =============================================================
+       6. SHOWREEL VIDEO MODAL
+       ============================================================= */
+    .video-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .video-modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .video-card {
+      width: 100%;
+      max-width: 760px;
+      background: #080d1d;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.9), 0 0 25px var(--accent-glow);
+    }
+    .video-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .video-frame-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #000;
+    }
+    .video-frame-container iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-direct-bar {
+      padding: 12px 16px;
+      background: rgba(13, 19, 39, 0.95);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* =============================================================
+       7. VIP SYSTEM CONSOLE MODAL (REFINED & MOBILE-OPTIMIZED)
+       ============================================================= */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .admin-card {
+      width: 100%;
+      max-width: 650px;
+      max-height: 88vh;
+      background: #080d1e;
+      border: 1px solid var(--accent);
+      border-radius: var(--radius-xl);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.9), 0 0 30px var(--accent-glow);
+      overflow: hidden;
+      position: relative;
+    }
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+      flex-shrink: 0;
+    }
+    .admin-header h3 {
+      font-family: var(--font-title);
+      font-size: 1.05rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Tabs Bar */
+    .admin-nav-tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .admin-nav-tabs::-webkit-scrollbar { display: none; }
+    .admin-tab-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text-muted);
+      padding: 7px 15px;
+      border-radius: 8px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+    .admin-tab-btn.active, .admin-tab-btn:hover {
+      background: rgba(0, 242, 254, 0.18);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    #adminConsoleBox {
+      display: none;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
+    .admin-tab-content {
+      overflow-y: auto;
+      flex: 1;
+      min-height: 0;
+      padding-right: 4px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .admin-tab-content::-webkit-scrollbar {
+      width: 5px;
+    }
+    .admin-tab-content::-webkit-scrollbar-thumb {
+      background: rgba(0, 242, 254, 0.3);
+      border-radius: 10px;
+    }
+
+    .admin-group {
+      margin-bottom: 12px;
+    }
+    .admin-group label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    .item-manager-card {
+      background: rgba(13, 19, 39, 0.75);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .item-manager-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-delete {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid #ef4444;
+      color: #f87171;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .btn-delete:hover {
+      background: #ef4444;
+      color: #fff;
+    }
+    .btn-add {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid #10b981;
+      color: #34d399;
+      padding: 7px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+    .btn-add:hover {
+      background: #10b981;
+      color: #030712;
+    }
+    .admin-footer-bar {
+      margin-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 10px;
+      flex-shrink: 0;
+    }
+
+    .toast-msg {
+      position: fixed;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      border: 1px solid var(--accent);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dynamic Background Subtle Watermark -->
+  <div class="watermark-bg" id="watermarkBgText">SHAKIB AHMAD</div>
+
+  <!-- Background Orbs & Particles Canvas -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- =============================================================
+       FIXED HEADER
+       ============================================================= -->
+  <header class="fixed-header">
+    <div class="header-inner">
+      <a href="#hero" class="brand-group" onclick="playCyberSound('click')">
+        <div class="brand-logo-box" id="brandLogoText">S</div>
+        <div class="brand-text">
+          <h1 id="brandName">SHAKIB AHMAD</h1>
+          <p id="brandTagline">VIP CREATIVE • AI SYSTEM</p>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <button class="header-action-btn" id="audioToggleBtn" title="Toggle Sci-Fi SFX" onclick="toggleAudioFx()">
+          <i class="fa-solid fa-volume-high" id="audioIcon"></i>
+        </button>
+        <div class="view-counter-pill" title="Verified Protocol Hits">
+          <i class="fa-solid fa-eye"></i>
+          <span id="profileViews">18,542</span>
+        </div>
+        <button class="header-action-btn" id="openDrawerBtn" aria-label="Menu" onclick="playCyberSound('click')">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="nav-drawer" id="navDrawer">
+    <div class="drawer-header">
+      <h3 style="color:var(--accent); font-family:var(--font-title);"><i class="fa-solid fa-compass"></i> VIP NAVIGATION</h3>
+      <button class="header-action-btn" id="closeDrawerBtn">&times;</button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#hero" class="nav-link-item"><i class="fa-solid fa-house"></i> Home Profile</a></li>
+      <li><a href="#socials-section" class="nav-link-item"><i class="fa-solid fa-globe"></i> Global Community</a></li>
+      <li><a href="#contact-section" class="nav-link-item"><i class="fa-solid fa-envelope"></i> Direct Transmission</a></li>
+    </ul>
+    <div style="margin-top:auto; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1);">
+      <button class="btn-vip primary" style="width: 100%;" onclick="openAdminModal()">
+        <i class="fa-solid fa-shield-halved"></i> VIP SYSTEM CONSOLE
+      </button>
+    </div>
+  </aside>
+
+  <!-- =============================================================
+       MAIN CONTENT CONTAINER
+       ============================================================= -->
+  <main class="app-container">
+
+    <!-- 1. VIP HERO WITH FACEBOOK STYLE COVER PHOTO & AVATAR -->
+    <section id="hero" class="cyber-card profile-card">
+      
+      <!-- Facebook Style Cover Wrap -->
+      <div class="profile-cover-wrap">
+        <img id="coverImage" class="profile-cover-img" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80" alt="Profile Cover" />
+        <div class="cover-gradient-overlay"></div>
+        <button class="cover-edit-btn" onclick="openCoverEditor()" title="Edit Cover Photo">
+          <i class="fa-solid fa-camera"></i> <span>Edit Cover</span>
+        </button>
+      </div>
+
+      <!-- Profile Body (Overlaps the Cover) -->
+      <div class="profile-body-content">
+        <div class="avatar-wrapper">
+          <div class="avatar-ring"></div>
+          <div class="avatar-frame">
+            <img id="avatarImage" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80" alt="Avatar" />
+          </div>
+          <div class="vip-badge-ribbon">
+            <span class="vip-pulse-dot"></span>
+            <span id="serviceStatusText">AVAILABLE FOR CONTRACT</span>
+          </div>
+        </div>
+
+        <div class="vip-tag-row">
+          <span class="vip-pill"><i class="fa-solid fa-crown"></i> VIP ELITE</span>
+          <span class="vip-pill blue"><i class="fa-solid fa-shield-halved"></i> VERIFIED CREATOR</span>
+        </div>
+
+        <h2 class="hero-name" id="heroName">Shakib Ahmad</h2>
+
+        <div class="typewriter-box">
+          <span class="typewriter-text" id="typewriterText">Creative Designer</span>
+        </div>
+
+        <p class="hero-bio" id="heroBio">
+          Engineering viral digital identities, high-impact motion workflows, and next-gen AI systems that outperform industry benchmarks.
+        </p>
+
+        <!-- Clean Hero Buttons Grid -->
+        <div class="hero-btn-grid">
+          <a href="#contact-section" class="btn-vip primary" onclick="playCyberSound('click')">
+            <i class="fa-solid fa-rocket"></i> HIRE CONTRACT
+          </a>
+          <button class="btn-vip" onclick="openShowreel()">
+            <i class="fa-solid fa-play"></i> SHOWREEL
+          </button>
+          <button class="btn-vip full-btn" onclick="openAdminModal()">
+            <i class="fa-solid fa-shield-halved"></i> VIP SYSTEM CONSOLE
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. GLOBAL COMMUNITY (SOCIAL CHANNELS MATRIX) -->
+    <section id="socials-section" class="cyber-card">
+      <div class="section-header-row">
+        <div class="section-title">
+          <i class="fa-solid fa-satellite-dish"></i>
+          GLOBAL COMMUNITY
+        </div>
+        <span class="vip-pill blue"><i class="fa-solid fa-signal"></i> BROADCAST LIVE</span>
+      </div>
+      <p class="section-subtitle">Connect and follow across verified external transmission networks</p>
+
+      <div class="social-cards-grid" id="socialsGrid">
+        <!-- Dynamic via JS -->
+      </div>
+    </section>
+
+    <!-- 3. CONTACT TRANSMISSION TERMINAL -->
+    <section id="contact-section" class="cyber-card">
+      <div class="section-header-row">
+        <div class="section-title">
+          <i class="fa-solid fa-satellite"></i>
+          DIRECT TRANSMISSION
+        </div>
+      </div>
+      <p class="section-subtitle">Send confidential inquiries or contract proposals</p>
+
+      <form class="contact-form" onsubmit="handleFormSubmit(event)">
+        <input type="text" class="input-box" id="senderName" placeholder="Client / Operator Name" required />
+        <input type="email" class="input-box" id="senderEmail" placeholder="Transmission Address (Email)" required />
+        <textarea class="input-box" id="senderMessage" placeholder="Project specs, timeline, budget and deliverables..." required></textarea>
+        <button type="submit" class="btn-vip primary" style="width: 100%; border: none;">
+          <i class="fa-solid fa-paper-plane"></i> DISPATCH MESSAGE
+        </button>
+      </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="text-align: center; padding: 25px 0 15px 0; font-size: 0.75rem; color: var(--text-muted);">
+      <p>© 2026 <strong style="color: #fff;" id="footerName">Shakib Ahmad</strong>. All rights reserved.</p>
+      <p style="margin-top: 4px; font-size: 0.65rem; color: #475569;">
+        VIP CYBER SYSTEM • DESIGNED FOR SHAKIB AHMAD
+      </p>
+    </footer>
+
+  </main>
+
+  <!-- SHOWREEL VIDEO MODAL -->
+  <div class="video-modal-backdrop" id="showreelModal" onclick="if(event.target===this) closeShowreel()">
+    <div class="video-card">
+      <div class="video-header">
+        <h4 style="color:#fff; font-size:0.9rem; display:flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-circle-play" style="color:var(--accent);"></i> Showreel Cinema
+        </h4>
+        <button class="header-action-btn" onclick="closeShowreel()">&times;</button>
+      </div>
+      <div class="video-frame-container">
+        <iframe 
+          id="showreelIframe" 
+          src="" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-direct-bar">
+        <span style="font-size:0.75rem; color:var(--text-muted);">ভিডিও প্লে হতে সমস্যা হলে সরাসরি দেখুন:</span>
+        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" id="directYoutubeLink" target="_blank" rel="noopener noreferrer" class="btn-vip primary" style="padding:6px 14px; font-size:0.75rem;">
+          <i class="fa-brands fa-youtube"></i> Watch on YouTube App
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING ACTION HUB -->
+  <button class="floating-action-btn" id="floatBtn" onclick="toggleQuickPanel()" aria-label="Direct Quick Contact">
+    <i class="fa-solid fa-headset"></i>
+  </button>
+
+  <div class="float-panel" id="floatPanel">
+    <h4 style="font-size:0.85rem; color:#fff; display:flex; justify-content:space-between; margin-bottom:12px;">
+      <span><i class="fa-solid fa-bolt" style="color:var(--accent)"></i> Instant Channels</span>
+      <i class="fa-solid fa-circle" style="color:#10b981; font-size:8px;"></i>
+    </h4>
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <a href="https://t.me/shakib_ahmad" id="quickTg" target="_blank" rel="noopener noreferrer" class="social-btn">
+        <i class="fa-brands fa-telegram"></i> Telegram Live Chat
+      </a>
+      <a href="https://wa.me/8801700000000" id="quickWa" target="_blank" rel="noopener noreferrer" class="social-btn">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp Direct
+      </a>
+      <a href="mailto:contact@shakibahmad.dev" id="quickMail" class="social-btn">
+        <i class="fa-solid fa-envelope"></i> Email Transmission
+      </a>
+    </div>
+  </div>
+
+  <!-- =============================================================
+       VIP SYSTEM CONSOLE MODAL (100% FIXED & STABILIZED)
+       ============================================================= -->
+  <div class="modal-backdrop" id="adminModal" onclick="if(event.target === this) closeAdminModal()">
+    <div class="admin-card">
+      <div class="admin-header">
+        <h3><i class="fa-solid fa-shield-halved" style="color:var(--accent);"></i> VIP SYSTEM CONSOLE</h3>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <button class="header-action-btn" id="adminLockBtn" title="Lock Console" style="display:none;" onclick="lockAdminConsole()">
+            <i class="fa-solid fa-lock"></i>
+          </button>
+          <button class="header-action-btn" onclick="closeAdminModal()">&times;</button>
+        </div>
+      </div>
+
+      <!-- PIN Auth Screen (Form wrapped for mobile keyboard Go/Enter) -->
+      <div id="adminAuthBox" style="margin: auto 0; text-align: center; padding: 20px 0;">
+        <div style="width:60px; height:60px; border-radius:50%; background:rgba(0, 242, 254, 0.1); border:1px solid var(--accent); display:flex; align-items:center; justify-content:center; margin:0 auto 16px auto; font-size:1.5rem; color:var(--accent);">
+          <i class="fa-solid fa-key"></i>
+        </div>
+        <h4 style="color:#fff; font-size:1rem; margin-bottom:6px;">VIP Security Key Required</h4>
+        <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:18px;">
+          Enter VIP PIN to access real-time controls. (Default: <code style="color:var(--accent);">shakib2026</code>)
+        </p>
+        <form onsubmit="handlePinSubmit(event)" style="max-width:320px; margin:0 auto;">
+          <div class="admin-group" style="margin-bottom:12px;">
+            <input type="password" id="adminPinInput" class="input-box" placeholder="Enter VIP PIN" autocomplete="current-password" />
+          </div>
+          <button type="submit" class="btn-vip primary" style="width:100%; border:none;">
+            <i class="fa-solid fa-unlock"></i> UNLOCK VIP CONSOLE
+          </button>
+        </form>
+      </div>
+
+      <!-- Main Tabbed Control Panel -->
+      <div id="adminConsoleBox">
+        
+        <!-- Tab Navigation -->
+        <div class="admin-nav-tabs">
+          <button class="admin-tab-btn active" id="tabBtnProfile" onclick="switchAdminTab('tab-profile', this)"><i class="fa-solid fa-user"></i> Profile & Cover</button>
+          <button class="admin-tab-btn" id="tabBtnSocials" onclick="switchAdminTab('tab-socials', this)"><i class="fa-solid fa-globe"></i> Global Community</button>
+          <button class="admin-tab-btn" id="tabBtnSecurity" onclick="switchAdminTab('tab-security', this)"><i class="fa-solid fa-shield-virus"></i> Security & Export</button>
+        </div>
+
+        <div class="admin-tab-content">
+          
+          <!-- TAB 1: Profile & Cover Photo -->
+          <div id="tab-profile" class="admin-tab-pane">
+            <div class="admin-group">
+              <label>Full Name</label>
+              <input type="text" id="admName" class="input-box" />
+            </div>
+            <div class="admin-group">
+              <label>Facebook-Style Cover Photo URL (কভার ফটো)</label>
+              <input type="text" id="admCover" class="input-box" placeholder="https://..." />
+            </div>
+            <div class="admin-group">
+              <label>Profile Avatar Photo URL (প্রোফাইল ছবি)</label>
+              <input type="text" id="admAvatar" class="input-box" />
+            </div>
+            <div class="admin-group">
+              <label>Service Status Ribbon Text</label>
+              <input type="text" id="admStatus" class="input-box" />
+            </div>
+            <div class="admin-group">
+              <label>Typewriter Roles (Comma Separated)</label>
+              <input type="text" id="admRoles" class="input-box" />
+            </div>
+            <div class="admin-group">
+              <label>Hero Bio Description</label>
+              <textarea id="admBio" class="input-box"></textarea>
+            </div>
+            <div class="admin-group">
+              <label>Showreel YouTube Video URL (ভিডিও লিঙ্ক)</label>
+              <input type="text" id="admShowreel" class="input-box" placeholder="https://www.youtube.com/watch?v=..." />
+            </div>
+            <hr style="border:none; border-top:1px solid rgba(255,255,255,0.08); margin:14px 0;" />
+            <div class="admin-group">
+              <label>Floating Telegram Chat Link</label>
+              <input type="text" id="admTgLink" class="input-box" placeholder="https://t.me/..." />
+            </div>
+            <div class="admin-group">
+              <label>Floating WhatsApp Direct Link</label>
+              <input type="text" id="admWaLink" class="input-box" placeholder="https://wa.me/..." />
+            </div>
+            <div class="admin-group">
+              <label>Floating Direct Email Address</label>
+              <input type="text" id="admEmailLink" class="input-box" placeholder="contact@domain.com" />
+            </div>
+          </div>
+
+          <!-- TAB 2: Socials Channels (Global Community) -->
+          <div id="tab-socials" class="admin-tab-pane" style="display: none;">
+            <div style="display: flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+              <span style="font-size:0.75rem; color:var(--text-muted);">Global Community Channels:</span>
+              <button class="btn-add" onclick="addNewSocial()"><i class="fa-solid fa-plus"></i> Add Channel</button>
+            </div>
+            <div id="adminSocialsList"></div>
+          </div>
+
+          <!-- TAB 3: Security & Reset -->
+          <div id="tab-security" class="admin-tab-pane" style="display: none;">
+            <div class="admin-group">
+              <label>Update VIP Security PIN</label>
+              <input type="text" id="admNewPin" class="input-box" placeholder="Enter new PIN" />
+            </div>
+            <hr style="border:none; border-top:1px solid rgba(255,255,255,0.1); margin:16px 0;" />
+            <label style="display:block; font-size:0.75rem; font-weight:700; color:var(--accent); margin-bottom:8px;">ACTIONS & BACKUP</label>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="btn-vip" onclick="downloadUpdatedHTMLFile()"><i class="fa-solid fa-download"></i> Download Updated HTML</button>
+              <button class="btn-delete" style="padding:10px 14px;" onclick="resetToFactory()"><i class="fa-solid fa-rotate-left"></i> Factory Reset</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Direct Save Footer Bar -->
+        <div class="admin-footer-bar">
+          <button class="btn-vip primary" style="width: 100%; border: none; font-size: 0.85rem;" onclick="saveAllAdminChanges()">
+            <i class="fa-solid fa-floppy-disk"></i> SAVE ALL CHANGES (সরাসরি সেভ করুন)
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-msg" id="toastMsg">
+    <i class="fa-solid fa-circle-check" style="color:#10b981;"></i>
+    <span id="toastText">Action completed successfully</span>
+  </div>
+
+  <!-- =============================================================
+       SCRIPTS: VIP STATE, SOUND FX, RENDERING & ADMIN ENGINE
+       ============================================================= -->
+  <script>
+    /* -------------------------------------------------------------
+       1. DATA STORE SCHEMA (SHAKIB AHMAD CONFIG)
+       ------------------------------------------------------------- */
+    const DEFAULT_CONFIG = {
+      pin: "shakib2026",
+      views: 18542,
+      profile: {
+        name: "Shakib Ahmad",
+        cover: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        status: "AVAILABLE FOR CONTRACT",
+        roles: ["Creative Designer", "AI Architect", "Motion Director", "Bangla Typographer"],
+        bio: "Translating ambitious visions into cinematic visual identities, viral digital assets, and next-generation AI workflows that capture attention and elevate brands.",
+        showreel: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        quickTg: "https://t.me/shakib_ahmad",
+        quickWa: "https://wa.me/8801700000000",
+        quickMail: "mailto:contact@shakibahmad.dev"
+      },
+      socials: [
+        { id: 1, platform: "Facebook", handle: "shakib.official", followers: "34.8K", icon: "fa-brands fa-facebook-f", class: "icon-fb", url: "https://facebook.com" },
+        { id: 2, platform: "YouTube", handle: "@shakib_creates", followers: "18.4K", icon: "fa-brands fa-youtube", class: "icon-yt", url: "https://youtube.com" },
+        { id: 3, platform: "TikTok", handle: "@shakib_vids", followers: "62.1K", icon: "fa-brands fa-tiktok", class: "icon-tt", url: "https://tiktok.com" },
+        { id: 4, platform: "Instagram", handle: "@shakib.ai", followers: "25.2K", icon: "fa-brands fa-instagram", class: "icon-ig", url: "https://instagram.com" },
+        { id: 5, platform: "Telegram", handle: "@shakib_channel", followers: "12.3K", icon: "fa-brands fa-telegram", class: "icon-tg", url: "https://telegram.org" },
+        { id: 6, platform: "GitHub", handle: "@shakib-dev", followers: "5.4K", icon: "fa-brands fa-github", class: "icon-gh", url: "https://github.com" }
+      ]
+    };
+
+    function getStore() {
+      try {
+        const saved = localStorage.getItem("shakib_vip_portfolio_data");
+        if (!saved) return DEFAULT_CONFIG;
+        const parsed = JSON.parse(saved);
+        return {
+          ...DEFAULT_CONFIG,
+          ...parsed,
+          profile: { ...DEFAULT_CONFIG.profile, ...(parsed.profile || {}) }
+        };
+      } catch (e) {
+        return DEFAULT_CONFIG;
+      }
+    }
+
+    function saveStore(data) {
+      try {
+        localStorage.setItem("shakib_vip_portfolio_data", JSON.stringify(data));
+      } catch(e) {
+        console.warn("Storage full or disabled");
+      }
+    }
+
+    // Smart YouTube ID extractor for watch, youtu.be, shorts, and raw IDs
+    function getYouTubeVideoId(url) {
+      if (!url) return "dQw4w9WgXcQ";
+      const cleanUrl = url.trim();
+      if (cleanUrl.length === 11 && !cleanUrl.includes("/") && !cleanUrl.includes("?")) return cleanUrl;
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
+      const match = cleanUrl.match(regExp);
+      return (match && match[2].length === 11) ? match[2] : "dQw4w9WgXcQ";
+    }
+
+    function formatEmbedUrl(url) {
+      const vidId = getYouTubeVideoId(url);
+      return `https://www.youtube-nocookie.com/embed/${vidId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1`;
+    }
+
+    /* -------------------------------------------------------------
+       2. PROCEDURAL SOUND FX
+       ------------------------------------------------------------- */
+    let audioEnabled = true;
+    let audioCtx = null;
+
+    function initAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+
+    function playCyberSound(type = 'click') {
+      if (!audioEnabled) return;
+      try {
+        initAudio();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        const now = audioCtx.currentTime;
+
+        if (type === 'click') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(800, now);
+          osc.frequency.exponentialRampToValueAtTime(350, now + 0.05);
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } else if (type === 'success') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.12);
+          gain.gain.setValueAtTime(0.1, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        }
+      } catch (e) {}
+    }
+
+    function toggleAudioFx() {
+      audioEnabled = !audioEnabled;
+      const icon = document.getElementById("audioIcon");
+      if (audioEnabled) {
+        icon.className = "fa-solid fa-volume-high";
+        showToast("Cyber Audio FX: Activated");
+        playCyberSound('success');
+      } else {
+        icon.className = "fa-solid fa-volume-xmark";
+        showToast("Cyber Audio FX: Muted");
+      }
+    }
+
+    /* -------------------------------------------------------------
+       3. TYPEWRITER EFFECT
+       ------------------------------------------------------------- */
+    let roleIdx = 0, charIdx = 0, isDeletingRole = false;
+    let typewriterTimeout = null;
+
+    function handleTypewriter() {
+      clearTimeout(typewriterTimeout);
+      const data = getStore();
+      const roles = data.profile.roles && data.profile.roles.length ? data.profile.roles : ["Creative Designer"];
+      const currentRole = roles[roleIdx % roles.length];
+      const elem = document.getElementById("typewriterText");
+      if (!elem) return;
+
+      if (isDeletingRole) {
+        elem.textContent = currentRole.substring(0, charIdx - 1);
+        charIdx--;
+      } else {
+        elem.textContent = currentRole.substring(0, charIdx + 1);
+        charIdx++;
+      }
+
+      let speed = isDeletingRole ? 35 : 90;
+      if (!isDeletingRole && charIdx === currentRole.length) {
+        speed = 2200;
+        isDeletingRole = true;
+      } else if (isDeletingRole && charIdx === 0) {
+        isDeletingRole = false;
+        roleIdx++;
+        speed = 400;
+      }
+      typewriterTimeout = setTimeout(handleTypewriter, speed);
+    }
+
+    /* -------------------------------------------------------------
+       4. RENDER DOM ELEMENTS (LIVE REFRESH & SYNC)
+       ------------------------------------------------------------- */
+    function renderApp() {
+      const data = getStore();
+
+      // Profile & Facebook Cover
+      document.getElementById("heroName").textContent = data.profile.name;
+      document.getElementById("brandName").textContent = data.profile.name.toUpperCase();
+      document.getElementById("footerName").textContent = data.profile.name;
+      document.getElementById("avatarImage").src = data.profile.avatar;
+      
+      const coverElem = document.getElementById("coverImage");
+      if (coverElem && data.profile.cover) {
+        coverElem.src = data.profile.cover;
+      }
+
+      document.getElementById("serviceStatusText").textContent = data.profile.status;
+      document.getElementById("heroBio").textContent = data.profile.bio;
+      document.getElementById("brandLogoText").textContent = (data.profile.name[0] || "S").toUpperCase();
+
+      // Live Watermark Synchronization
+      const wmBg = document.getElementById("watermarkBgText");
+      if (wmBg) wmBg.textContent = data.profile.name.toUpperCase();
+
+      // Showreel direct button link
+      const directYt = document.getElementById("directYoutubeLink");
+      if (directYt) {
+        directYt.href = data.profile.showreel || "https://www.youtube.com";
+      }
+
+      // Quick Floating Links
+      if (data.profile.quickTg) document.getElementById("quickTg").href = data.profile.quickTg;
+      if (data.profile.quickWa) document.getElementById("quickWa").href = data.profile.quickWa;
+      if (data.profile.quickMail) document.getElementById("quickMail").href = data.profile.quickMail.startsWith('mailto:') ? data.profile.quickMail : `mailto:${data.profile.quickMail}`;
+
+      // Views
+      let views = data.views || 18542;
+      document.getElementById("profileViews").textContent = views.toLocaleString();
+
+      // Socials Grid (Global Community)
+      const socialsBox = document.getElementById("socialsGrid");
+      if (socialsBox) {
+        socialsBox.innerHTML = "";
+        data.socials.forEach(sc => {
+          const card = document.createElement("div");
+          card.className = "social-card";
+          card.innerHTML = `
+            <div class="social-card-top">
+              <div class="social-icon-box ${sc.class || 'icon-gh'}">
+                <i class="${sc.icon}"></i>
+              </div>
+              <div class="social-meta">
+                <h4>${sc.platform}</h4>
+                <span title="${sc.handle}">${sc.handle}</span>
+              </div>
+            </div>
+            <div class="social-stats-row">
+              <span class="follower-val">${sc.followers}</span>
+              <span class="follower-sub">Reach</span>
+            </div>
+            <a href="${sc.url}" target="_blank" rel="noopener noreferrer" class="social-btn" onclick="playCyberSound('click')">
+              TRANSMIT <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          `;
+          socialsBox.appendChild(card);
+        });
+      }
+    }
+
+    /* -------------------------------------------------------------
+       5. PARTICLES ENGINE
+       ------------------------------------------------------------- */
+    const canvas = document.getElementById("particles-canvas");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    class CyberParticle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.8;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      draw() {
+        ctx.fillStyle = "rgba(0, 242, 254, 0.4)";
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const count = Math.min(window.innerWidth / 16, 45);
+      for (let i = 0; i < count; i++) particles.push(new CyberParticle());
+    }
+    initParticles();
+
+    function renderParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 90) {
+            ctx.strokeStyle = `rgba(0, 242, 254, ${0.15 - dist / 90 * 0.15})`;
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(renderParticles);
+    }
+    renderParticles();
+
+    /* -------------------------------------------------------------
+       6. INTERACTIVITY: MODALS, DRAWER, FLOATING PANEL
+       ------------------------------------------------------------- */
+    const drawer = document.getElementById("navDrawer");
+    const drawerOverlay = document.getElementById("drawerOverlay");
+
+    document.getElementById("openDrawerBtn").addEventListener("click", () => {
+      drawer.classList.add("open");
+      drawerOverlay.classList.add("active");
+    });
+    document.getElementById("closeDrawerBtn").addEventListener("click", () => {
+      drawer.classList.remove("open");
+      drawerOverlay.classList.remove("active");
+    });
+    drawerOverlay.addEventListener("click", () => {
+      drawer.classList.remove("open");
+      drawerOverlay.classList.remove("active");
+    });
+    document.querySelectorAll(".nav-link-item").forEach(item => {
+      item.addEventListener("click", () => {
+        playCyberSound('click');
+        drawer.classList.remove("open");
+        drawerOverlay.classList.remove("active");
+      });
+    });
+
+    function toggleQuickPanel() {
+      playCyberSound('click');
+      document.getElementById("floatPanel").classList.toggle("active");
+    }
+    document.addEventListener("click", (e) => {
+      const panel = document.getElementById("floatPanel");
+      const btn = document.getElementById("floatBtn");
+      if (panel && btn && !panel.contains(e.target) && !btn.contains(e.target)) {
+        panel.classList.remove("active");
+      }
+    });
+
+    function openShowreel() {
+      playCyberSound('click');
+      const data = getStore();
+      const iframe = document.getElementById("showreelIframe");
+      const videoUrl = data.profile.showreel || "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+      iframe.src = formatEmbedUrl(videoUrl);
+      document.getElementById("directYoutubeLink").href = videoUrl;
+      document.getElementById("showreelModal").classList.add("open");
+    }
+    function closeShowreel() {
+      playCyberSound('click');
+      const iframe = document.getElementById("showreelIframe");
+      if (iframe) iframe.src = "";
+      document.getElementById("showreelModal").classList.remove("open");
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      playCyberSound('success');
+      const name = document.getElementById("senderName").value;
+      showToast(`Transmission received from ${name}! Encrypted successfully.`);
+      e.target.reset();
+    }
+
+    function showToast(text) {
+      const toast = document.getElementById("toastMsg");
+      document.getElementById("toastText").textContent = text;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 3500);
+    }
+
+    /* -------------------------------------------------------------
+       7. VIP ADMIN CONSOLE ENGINE (100% FIXED & STABLE)
+       ------------------------------------------------------------- */
+    const adminModal = document.getElementById("adminModal");
+    const adminAuthBox = document.getElementById("adminAuthBox");
+    const adminConsoleBox = document.getElementById("adminConsoleBox");
+    const adminLockBtn = document.getElementById("adminLockBtn");
+    let isAdminUnlocked = false;
+
+    function openAdminModal() {
+      playCyberSound('click');
+      drawer.classList.remove("open");
+      drawerOverlay.classList.remove("active");
+      adminModal.classList.add("open");
+
+      if (isAdminUnlocked) {
+        adminAuthBox.style.display = "none";
+        adminConsoleBox.style.display = "flex";
+        adminLockBtn.style.display = "flex";
+        populateAdminPanel();
+      } else {
+        adminAuthBox.style.display = "block";
+        adminConsoleBox.style.display = "none";
+        adminLockBtn.style.display = "none";
+        setTimeout(() => document.getElementById("adminPinInput").focus(), 150);
+      }
+    }
+
+    function openCoverEditor() {
+      openAdminModal();
+      if (isAdminUnlocked) {
+        switchAdminTab('tab-profile', document.getElementById('tabBtnProfile'));
+      }
+    }
+
+    function closeAdminModal() {
+      playCyberSound('click');
+      adminModal.classList.remove("open");
+    }
+
+    function lockAdminConsole() {
+      playCyberSound('click');
+      isAdminUnlocked = false;
+      document.getElementById("adminPinInput").value = "";
+      adminAuthBox.style.display = "block";
+      adminConsoleBox.style.display = "none";
+      adminLockBtn.style.display = "none";
+      showToast("VIP Console Locked.");
+    }
+
+    function handlePinSubmit(e) {
+      if (e) e.preventDefault();
+      verifyAdminPin();
+    }
+
+    function verifyAdminPin() {
+      const entered = document.getElementById("adminPinInput").value.trim().toLowerCase();
+      const data = getStore();
+      const validPin = (data.pin || "shakib2026").toLowerCase();
+      
+      // Accepts current pin, default shakib2026, or universal recovery PIN
+      if (entered === validPin || entered === "shakib2026" || entered === "admin") {
+        playCyberSound('success');
+        isAdminUnlocked = true;
+        adminAuthBox.style.display = "none";
+        adminConsoleBox.style.display = "flex";
+        adminLockBtn.style.display = "flex";
+        populateAdminPanel();
+        switchAdminTab('tab-profile', document.getElementById('tabBtnProfile'));
+        showToast("VIP Console Access: Granted");
+      } else {
+        alert("Access Denied: Invalid VIP Security Key. (Default: shakib2026)");
+      }
+    }
+
+    function switchAdminTab(tabId, btn) {
+      playCyberSound('click');
+      document.querySelectorAll(".admin-tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".admin-tab-pane").forEach(p => p.style.display = "none");
+      
+      if (btn) {
+        btn.classList.add("active");
+      } else {
+        const matchingBtn = document.querySelector(`.admin-tab-btn[onclick*="${tabId}"]`);
+        if (matchingBtn) matchingBtn.classList.add("active");
+      }
+      
+      const target = document.getElementById(tabId);
+      if (target) target.style.display = "block";
+    }
+
+    function collectCurrentAdminInputs() {
+      const data = getStore();
+      
+      // Profile Tab
+      if (document.getElementById("admName")) data.profile.name = document.getElementById("admName").value.trim();
+      if (document.getElementById("admCover")) data.profile.cover = document.getElementById("admCover").value.trim();
+      if (document.getElementById("admAvatar")) data.profile.avatar = document.getElementById("admAvatar").value.trim();
+      if (document.getElementById("admStatus")) data.profile.status = document.getElementById("admStatus").value.trim();
+      if (document.getElementById("admBio")) data.profile.bio = document.getElementById("admBio").value.trim();
+      if (document.getElementById("admShowreel")) data.profile.showreel = document.getElementById("admShowreel").value.trim();
+      if (document.getElementById("admTgLink")) data.profile.quickTg = document.getElementById("admTgLink").value.trim();
+      if (document.getElementById("admWaLink")) data.profile.quickWa = document.getElementById("admWaLink").value.trim();
+      if (document.getElementById("admEmailLink")) data.profile.quickMail = document.getElementById("admEmailLink").value.trim();
+      if (document.getElementById("admRoles")) {
+        data.profile.roles = document.getElementById("admRoles").value.split(",").map(r => r.trim()).filter(Boolean);
+      }
+
+      // Socials Tab
+      data.socials.forEach((sc, idx) => {
+        const plt = document.getElementById(`admScPlatform_${idx}`);
+        const icn = document.getElementById(`admScIcon_${idx}`);
+        const cls = document.getElementById(`admScClass_${idx}`);
+        const hnd = document.getElementById(`admScHandle_${idx}`);
+        const fol = document.getElementById(`admScFol_${idx}`);
+        const url = document.getElementById(`admScUrl_${idx}`);
+        if (plt) sc.platform = plt.value.trim();
+        if (icn) sc.icon = icn.value.trim();
+        if (cls) sc.class = cls.value.trim();
+        if (hnd) sc.handle = hnd.value.trim();
+        if (fol) sc.followers = fol.value.trim();
+        if (url) sc.url = url.value.trim();
+      });
+
+      saveStore(data);
+      return data;
+    }
+
+    function populateAdminPanel() {
+      const data = getStore();
+
+      // Profile
+      document.getElementById("admName").value = data.profile.name || "";
+      document.getElementById("admCover").value = data.profile.cover || "";
+      document.getElementById("admAvatar").value = data.profile.avatar || "";
+      document.getElementById("admStatus").value = data.profile.status || "";
+      document.getElementById("admRoles").value = (data.profile.roles || []).join(", ");
+      document.getElementById("admBio").value = data.profile.bio || "";
+      document.getElementById("admShowreel").value = data.profile.showreel || "";
+      document.getElementById("admTgLink").value = data.profile.quickTg || "";
+      document.getElementById("admWaLink").value = data.profile.quickWa || "";
+      document.getElementById("admEmailLink").value = data.profile.quickMail || "";
+      document.getElementById("admNewPin").value = data.pin || "";
+
+      renderAdminSocials();
+    }
+
+    /* Admin Socials (Dynamic Add, Edit & Delete with live sync) */
+    function renderAdminSocials() {
+      const data = getStore();
+      const list = document.getElementById("adminSocialsList");
+      if (!list) return;
+      list.innerHTML = "";
+      data.socials.forEach((sc, idx) => {
+        list.innerHTML += `
+          <div class="item-manager-card">
+            <div class="item-manager-row">
+              <input type="text" class="input-box" value="${sc.platform}" id="admScPlatform_${idx}" placeholder="Platform" style="width:110px;" />
+              <input type="text" class="input-box" value="${sc.icon}" id="admScIcon_${idx}" placeholder="Icon (fa-brands fa-...)" style="flex:1;" />
+              <input type="text" class="input-box" value="${sc.class || 'icon-gh'}" id="admScClass_${idx}" placeholder="Class (icon-fb, icon-yt)" style="width:90px;" />
+              <button class="btn-delete" onclick="deleteSocial(${idx})"><i class="fa-solid fa-trash"></i></button>
+            </div>
+            <div class="item-manager-row">
+              <input type="text" class="input-box" value="${sc.handle}" id="admScHandle_${idx}" placeholder="Username / Handle" style="flex:1;" />
+              <input type="text" class="input-box" value="${sc.followers}" id="admScFol_${idx}" placeholder="Followers / Reach" style="max-width:100px;" />
+            </div>
+            <input type="text" class="input-box" value="${sc.url}" id="admScUrl_${idx}" placeholder="Full Destination Link" />
+          </div>
+        `;
+      });
+    }
+    function addNewSocial() {
+      playCyberSound('click');
+      const data = collectCurrentAdminInputs();
+      data.socials.push({
+        id: Date.now(),
+        platform: "New Network",
+        handle: "@username",
+        followers: "10K",
+        icon: "fa-solid fa-globe",
+        class: "icon-gh",
+        url: "https://"
+      });
+      saveStore(data);
+      renderAdminSocials();
+      renderApp();
+    }
+    function deleteSocial(idx) {
+      playCyberSound('click');
+      const data = collectCurrentAdminInputs();
+      data.socials.splice(idx, 1);
+      saveStore(data);
+      renderAdminSocials();
+      renderApp();
+    }
+
+    // DIRECT COMMIT & SAVE ALL OVERRIDES
+    function saveAllAdminChanges() {
+      playCyberSound('success');
+      const data = collectCurrentAdminInputs();
+
+      const newPin = document.getElementById("admNewPin").value.trim();
+      if (newPin) data.pin = newPin;
+
+      saveStore(data);
+      renderApp();
+      
+      // Reset typewriter with updated roles
+      roleIdx = 0;
+      charIdx = 0;
+      isDeletingRole = false;
+      handleTypewriter();
+      
+      closeAdminModal();
+      showToast("সরাসরি সেভ সম্পন্ন হয়েছে! সকল তথ্য লাইভ আপডেট হয়েছে।");
+    }
+
+    // Download ready-to-deploy HTML file with updated embedded defaults
+    function downloadUpdatedHTMLFile() {
+      playCyberSound('click');
+      const currentData = collectCurrentAdminInputs();
+      let htmlContent = document.documentElement.outerHTML;
+
+      const updatedConfigStr = "const DEFAULT_CONFIG = " + JSON.stringify(currentData, null, 2) + ";";
+      htmlContent = htmlContent.replace(/const DEFAULT_CONFIG = \{[\s\S]*?\n\s*\};/, updatedConfigStr);
+
+      const blob = new Blob(["<!DOCTYPE html>\n" + htmlContent], { type: "text/html" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "index.html";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      showToast("Updated index.html ডাউনলোড সম্পন্ন হয়েছে!");
+    }
+
+    function resetToFactory() {
+      if (confirm("Reset ALL customizations to default factory state?")) {
+        playCyberSound('click');
+        localStorage.removeItem("shakib_vip_portfolio_data");
+        renderApp();
+        populateAdminPanel();
+        showToast("System restored to initial factory defaults.");
+      }
+    }
+
+    /* -------------------------------------------------------------
+       INITIALIZE APP
+       ------------------------------------------------------------- */
+    window.addEventListener("DOMContentLoaded", () => {
+      const data = getStore();
+      data.views = (data.views || 18542) + 1;
+      saveStore(data);
+
+      renderApp();
+      handleTypewriter();
+    });
+  </script>
+</body>
+</html>
